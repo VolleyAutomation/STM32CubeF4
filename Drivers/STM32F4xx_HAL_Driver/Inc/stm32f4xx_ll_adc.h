@@ -294,7 +294,7 @@ extern "C" {
   * @retval Pointer to register address
   */
 #define __ADC_PTR_REG_OFFSET(__REG__, __REG_OFFFSET__)                         \
- ((__IO uint32_t *)((uint32_t) (reinterpret_cast<unsigned long>(&(__REG__)) + ((__REG_OFFFSET__) << 2UL))))
+ ((__IO uint32_t *)((uint32_t) ((unsigned long)(&(__REG__)) + ((__REG_OFFFSET__) << 2UL))))
 
 /**
   * @}
@@ -1866,12 +1866,12 @@ __STATIC_INLINE uint32_t LL_ADC_DMA_GetRegAddr(ADC_TypeDef *ADCx, uint32_t Regis
   if (Register == LL_ADC_DMA_REG_REGULAR_DATA)
   {
     /* Retrieve address of register DR */
-    data_reg_addr = reinterpret_cast<unsigned long>(&(ADCx->DR));
+    data_reg_addr = (unsigned long)(&(ADCx->DR));
   }
   else /* (Register == LL_ADC_DMA_REG_REGULAR_DATA_MULTI) */
   {
     /* Retrieve address of register CDR */
-    data_reg_addr = reinterpret_cast<unsigned long>(&((__LL_ADC_COMMON_INSTANCE(ADCx))->CDR));
+    data_reg_addr = (unsigned long)(&((__LL_ADC_COMMON_INSTANCE(ADCx))->CDR));
   }
   
   return data_reg_addr;
